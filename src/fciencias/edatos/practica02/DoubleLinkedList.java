@@ -232,40 +232,42 @@ public class DoubleLinkedList<T> implements TDAList<T> {
     return null;
     
     }
-      @Override
+
+    @Override
     public T remove(int i) throws IndexOutOfBoundsException {
-        Nodo a = cabeza;
-        Nodo b = a;
-        
-        if(i>size() || i<0) //excepcion
-        throw new IndexOutOfBoundsException();
+      Nodo a = cabeza;
+      Nodo b = a;
+      
+      
+      if(i>size() || i<0) //excepcion
+      throw new IndexOutOfBoundsException();
 
-        if(i == 0){ //eliminar primer elemento
-            if(longitud == 1) clear();
-            b = cabeza;
-            cabeza = cabeza.siguiente;
-            cabeza.anterior = null;
-            longitud--;
-         
-        }
+      if(i == 0){ //eliminar primer elemento
+          if(longitud == 1) clear();
+          b = cabeza;
+          cabeza = cabeza.siguiente;
+          cabeza.anterior = null;
+          longitud--;
+       
+      }
 
-        if(i != 0){ //eliminar en la iesima posicion
-            for(int g = 0; g< i-1; g++){
-                a = a.siguiente;
-            }
+      if(i != 0){ //eliminar en la iesima posicion
+          for(int g = 0; g< i-1; g++){
+              a = a.siguiente;
+          }
 
-            b = a.siguiente;
-            a.siguiente = a.siguiente.siguiente;
-            a.anterior = a.anterior.anterior;
-            longitud--;
+          b = a.siguiente;
+          a.siguiente = a.siguiente.siguiente;
+          Nodo c = a.siguiente;
+          c.anterior = b.anterior;
+          longitud--;
 
-        }
-  
-            
-        return b.elemento; //fin
+      }
+
+          
+      return b.elemento; //fin
 
 }
-
 
 
    
